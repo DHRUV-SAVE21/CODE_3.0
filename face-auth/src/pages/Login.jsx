@@ -176,13 +176,13 @@ function Login() {
 
   if (imageError) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center gap-[24px] max-w-[840px] mx-auto">
+      <div className="flex flex-col items-center justify-center gap-[24px] max-w-[840px] mx-auto">
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-rose-700 sm:text-4xl">
           <span className="block">
             Upps! There is no profile picture associated with this account.
           </span>
         </h2>
-        <span className="block mt-4">
+        <span className="block mt-4 text-gray-700 text-xl font-medium">
           Please contact administration for registration or try again later.
         </span>
       </div>
@@ -190,28 +190,28 @@ function Login() {
   }
 
   return (
-    <div className="h-full flex flex-col items-center justify-center gap-[24px] max-w-[720px] mx-auto">
+    <div className="flex flex-col items-center justify-center gap-[24px] max-w-[720px] mx-auto">
       {!localUserStream && !modelsLoaded && (
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           <span className="block">
             You're Attempting to Log In With Your Face.
           </span>
-          <span className="block text-indigo-600 mt-2">Loading Models...</span>
+          <span className="block text-indigo-600 mt-2 font-medium">Loading Models...</span>
         </h2>
       )}
       {!localUserStream && modelsLoaded && (
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block text-indigo-600 mt-2">
+          <span className="block text-indigo-600 mt-2 font-bold">
             Please Recognize Your Face to Completely Log In.
           </span>
         </h2>
       )}
       {localUserStream && loginResult === "SUCCESS" && (
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block text-indigo-600 mt-2">
+          <span className="block text-indigo-600 mt-2 font-bold">
             We've successfully recognize your face!
           </span>
-          <span className="block text-indigo-600 mt-2">
+          <span className="block text-indigo-600/90 mt-2">
             Please stay {counter} more seconds...
           </span>
         </h2>
