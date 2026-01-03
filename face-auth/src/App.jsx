@@ -29,6 +29,7 @@ import SignUp from './pages/SignUp';
 import SignInEmail from './pages/SignInEmail';
 import UserSelect from './pages/UserSelect';
 import Protected from './pages/Protected';
+import GuidedProblemSolving from './pages/GuidedProblemSolving';
 
 // Layout Component
 const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true }) => {
@@ -119,6 +120,14 @@ function App() {
           <Layout showNavBar={false}>
             <HeroSection>
               <Protected />
+            </HeroSection>
+          </Layout>
+        } />
+
+        <Route path="/guided-problem-solving" element={
+          <Layout showNavBar={false}>
+            <HeroSection>
+              <GuidedProblemSolving />
             </HeroSection>
           </Layout>
         } />

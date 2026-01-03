@@ -16,6 +16,7 @@
     "face-api.js": "^0.22.2",
     "gsap": "^3.14.2",
     "lucide-react": "^0.562.0",
+    "motion": "^12.23.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1"
