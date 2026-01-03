@@ -2,19 +2,19 @@
 
 import * as React from "react"
 import { useState, useEffect, useRef } from "react";
-import { Send } from "lucide-react";
+import { Mic, Send } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
  
 const PLACEHOLDERS = [
-  "How do I solve this physics problem?",
-  "Explain the second law of thermodynamics.",
-  "What is the meaning of life?",
-  "What is the best way to learn React?",
-  "Help me with my calculus homework.",
-  "Summarize this concept for me.",
+    "I'm stuck on this calculus problem...",
+    "Can you explain the photoelectric effect?",
+    "What is the difference between Mitosis and Meiosis?",
+    "How do I balance this chemical equation?",
+    "Explain the concept of supply and demand.",
+    "I need help with this grammar rule."
 ];
  
-const AIChatInput = ({ onSend, loading = false }) => {
+const LiveDoubtInput = ({ onSend, loading = false }) => {
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [isActive, setIsActive] = useState(false);
@@ -167,9 +167,18 @@ const AIChatInput = ({ onSend, loading = false }) => {
                 </AnimatePresence>
               </div>
             </div>
+            
+            <button
+              className="p-4 rounded-full hover:bg-gray-100 transition text-gray-600"
+              title="Voice input"
+              type="button"
+              tabIndex={-1}
+            >
+              <Mic size={24} />
+            </button>
  
             <button
-              className={`flex items-center gap-2 bg-black hover:bg-zinc-800 text-white p-5 rounded-full font-bold justify-center transition-all hover:scale-105 active:scale-95 shadow-lg ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`flex items-center gap-1 bg-black hover:bg-zinc-800 text-white p-5 rounded-full font-bold justify-center transition-all hover:scale-105 active:scale-95 shadow-lg ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               title="Send"
               type="button"
               tabIndex={-1}
@@ -189,4 +198,4 @@ const AIChatInput = ({ onSend, loading = false }) => {
   );
 };
  
-export { AIChatInput };
+export { LiveDoubtInput };

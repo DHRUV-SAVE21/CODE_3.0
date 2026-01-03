@@ -23,3 +23,14 @@ class AuthResponse(BaseModel):
     user_id: Optional[str] = None
     token: Optional[str] = None
     message: str
+
+class LiveDoubtRequest(BaseModel):
+    event_type: str
+    user_id: str
+    question_id: str
+    step_number: int
+    student_answer: str
+
+class LiveDoubtResponse(BaseModel):
+    mode: str
+    explanation: Dict[str, str]

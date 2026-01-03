@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from database import db_connection
 from cloudinary_config import cloudinary_manager
 from face_service import face_auth_service
-from models import AuthResponse
+from models import AuthResponse, LiveDoubtRequest, LiveDoubtResponse
 import uvicorn
 
 load_dotenv()
@@ -227,6 +227,31 @@ async def get_user_face_data(user_id: str):
         result = face_auth_service.get_user_face_data(user_id)
         return result
     except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/live-doubt", response_model=LiveDoubtResponse)
+async def live_doubt_resolution(request: LiveDoubtRequest):
+    try:
+        print(f"❓ Doubt submitted by {request.user_id}: {request.student_answer}")
+        
+        # In a real app, you'd call an LLM here. 
+        # For now, we simulate a helpful tutor response.
+        answer = request.student_answer.lower()
+        if "factor" in answer:
+            explanation = "To factorize the expression, look for common terms first. For example, in 2x + 4, the common factor is 2."
+        elif "solvent" in answer or "solve" in answer:
+            explanation = "Let's break this down into smaller steps. What is the first thing you tried?"
+        else:
+            explanation = f"I've analyzed your question: '{request.student_answer}'. Let's solve this step-by-step together. What part of the problem seems most confusing?"
+
+        return LiveDoubtResponse(
+            mode="AI_ASSISTANCE_MODE",
+            explanation={
+                "text": explanation
+            }
+        )
+    except Exception as e:
+        print(f"❌ error in live doubt resolution: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.on_event("shutdown")

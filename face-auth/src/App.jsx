@@ -30,6 +30,7 @@ import SignInEmail from './pages/SignInEmail';
 import UserSelect from './pages/UserSelect';
 import Protected from './pages/Protected';
 import GuidedProblemSolving from './pages/GuidedProblemSolving';
+import LiveDoubtResolution from './pages/LiveDoubtResolution';
 
 // Layout Component
 const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true }) => {
@@ -128,6 +129,14 @@ function App() {
           <Layout showNavBar={false}>
             <HeroSection>
               <GuidedProblemSolving />
+            </HeroSection>
+          </Layout>
+        } />
+
+        <Route path="/live-doubt-resolution" element={
+          <Layout showNavBar={false}>
+            <HeroSection>
+              <LiveDoubtResolution />
             </HeroSection>
           </Layout>
         } />

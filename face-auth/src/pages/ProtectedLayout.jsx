@@ -77,6 +77,8 @@ const ProtectedLayout = ({ children, account }) => {
               onClick={() => {
                 if (item.name === 'Guided Problem Solving') {
                   navigate('/guided-problem-solving');
+                } else if (item.name === 'Live Doubt Resolution') {
+                  navigate('/live-doubt-resolution');
                 } else if (item.name === 'Dashboard') {
                   navigate('/protected');
                 }
