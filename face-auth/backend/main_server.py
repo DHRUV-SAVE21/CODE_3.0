@@ -319,6 +319,39 @@ async def get_dashboard_data(user_id: str):
         print(f"❌ Error fetching dashboard data: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/user/{user_id}/flashcards")
+async def get_flashcards(user_id: str):
+    try:
+        # In production, fetch personalized flashcards based on user's weak areas
+        # For now, return sample flashcards
+        flashcards = [
+            {
+                "topic": "Binary Search",
+                "concept": "Binary search works by repeatedly dividing the search interval in half. Always ensure your array is sorted before applying binary search.",
+                "difficulty": "Medium"
+            },
+            {
+                "topic": "Dynamic Programming",
+                "concept": "Break down complex problems into simpler subproblems. Store results of subproblems to avoid redundant calculations (memoization).",
+                "difficulty": "Hard"
+            },
+            {
+                "topic": "Array Manipulation",
+                "concept": "Two-pointer technique is efficient for problems involving pairs or subarrays. Move pointers based on problem constraints.",
+                "difficulty": "Easy"
+            },
+            {
+                "topic": "Time Complexity",
+                "concept": "O(log n) is better than O(n). Always analyze worst-case scenarios when choosing algorithms.",
+                "difficulty": "Easy"
+            }
+        ]
+        print(f"📚 Fetched {len(flashcards)} flashcards for user {user_id}")
+        return {"flashcards": flashcards}
+    except Exception as e:
+        print(f"❌ Error fetching flashcards: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.on_event("shutdown")
 async def shutdown_event():
     print("\n🔒 Shutting down server...")

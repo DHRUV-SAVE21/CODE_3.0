@@ -80,3 +80,11 @@ export async function getUserDashboard(userId) {
   }
   return res.json();
 }
+
+export async function getFlashcards(userId) {
+  const res = await fetch(`${API_BASE_URL}/api/user/${userId}/flashcards`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch flashcards");
+  }
+  return res.json();
+}

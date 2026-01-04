@@ -32,6 +32,7 @@ import Protected from './pages/Protected';
 import GuidedProblemSolving from './pages/GuidedProblemSolving';
 import LiveDoubtResolution from './pages/LiveDoubtResolution';
 import PricingDemo from './pages/pricing-demo';
+import SmartRevision from './pages/SmartRevision';
 
 // Layout Component
 const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true, showPricing = false }) => {
@@ -142,6 +143,8 @@ function App() {
             </HeroSection>
           </Layout>
         } />
+
+        <Route path="/smart-revision" element={<SmartRevision />} />
       </Routes>
     </Router>
   );

@@ -26,6 +26,7 @@ import {
 import { getUserDashboard } from "../api/client";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import ScrollStack, { ScrollStackItem } from '../components/ui/scroll-stack';
 
 const ProgressCircle = ({ percentage, size = 120 }) => {
   // Add padding to handle stroke caps and drop shadows
@@ -371,6 +372,49 @@ const SkillBadge = ({ data, account, onGenerate, isGenerating, displayName }) =>
     </div>
   );
 };
+
+const SmartRevision = ({ flashcards }) => {
+  if (!flashcards || flashcards.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full text-white/60">
+        <p>No flashcards available yet. Keep solving problems to generate personalized revision cards!</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-full w-full">
+      <ScrollStack
+        itemDistance={50}
+        itemScale={0.05}
+        itemStackDistance={20}
+        stackPosition="30%"
+        scaleEndPosition="15%"
+        baseScale={0.9}
+        blurAmount={2}
+        useWindowScroll={false}
+      >
+        {flashcards.map((card, index) => (
+          <ScrollStackItem
+            key={index}
+            itemClassName="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-xl border border-white/20"
+          >
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h4 className="text-xl font-bold text-white mb-4">{card.topic}</h4>
+                <p className="text-white/80 text-lg leading-relaxed">{card.concept}</p>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <span className="text-sm text-white/50">Card {index + 1} of {flashcards.length}</span>
+              </div>
+            </div>
+          </ScrollStackItem>
+        ))}
+      </ScrollStack>
+    </div>
+  );
+};
+
 
 const generateDynamicInsight = (blockId, data) => {
   if (!data) return null;
