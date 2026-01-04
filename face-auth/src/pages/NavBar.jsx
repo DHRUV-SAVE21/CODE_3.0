@@ -70,7 +70,7 @@ export function NavBar({ onStart }) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 border-b border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300">
        <div className="flex items-center gap-2">
-      <span className="text-3xl font-bold tracking-tight text-black">ThinkStep</span>
+      <img src="/logo.jpg" alt="Logo" className="h-20 w-auto object-contain" />
        </div>
 
       <div className="hidden md:flex items-center gap-10">

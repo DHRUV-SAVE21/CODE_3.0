@@ -67,6 +67,15 @@ const ProtectedLayout = ({ children, account }) => {
         </div>
       </div>
 
+      {/* Logo - Top Left next to menu */}
+      <div className="fixed top-14 left-36 z-[55]">
+        <img 
+          src="/logo.jpg" 
+          alt="Logo" 
+          className="h-20 w-auto object-contain rounded-xl shadow-lg"
+        />
+      </div>
+
       {/* Sidebar - Slide out */}
       <div className={`fixed inset-y-0 left-0 w-96 z-50 transform transition-transform duration-500 ease-in-out sidebar-container ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="h-full bg-white/10 backdrop-blur-2xl border-r border-white/20 p-8 pt-40 shadow-2xl flex flex-col gap-6">
@@ -83,6 +92,8 @@ const ProtectedLayout = ({ children, account }) => {
                   navigate('/protected');
                 } else if (item.name === 'Flash Learn') {
                   navigate('/smart-revision');
+                } else if (item.name === 'Intelligent Video Learning') {
+                  navigate('/intelligent-video-learning');
                 }
                 setShowSidebar(false);
               }}

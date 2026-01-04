@@ -88,3 +88,17 @@ export async function getFlashcards(userId) {
   }
   return res.json();
 }
+
+export async function searchVideo(query) {
+  const res = await fetch(`${API_BASE_URL}/api/video/search`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to search video");
+  }
+  return res.json();
+}

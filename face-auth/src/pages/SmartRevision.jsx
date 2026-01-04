@@ -33,17 +33,27 @@ const SmartRevision = () => {
           console.error("Failed to fetch flashcards:", err);
           setError("Failed to load flashcards");
           setLoading(false);
-          // Fallback data
+          // Fallback data with 4 flashcards
           setFlashcards([
             {
               topic: "Binary Search",
-              concept: "Binary search works by repeatedly dividing the search interval in half.",
+              concept: "Binary search works by repeatedly dividing the search interval in half. Always ensure your array is sorted before applying binary search.",
               difficulty: "Medium"
             },
             {
               topic: "Dynamic Programming",
-              concept: "Break down complex problems into simpler subproblems.",
+              concept: "Break down complex problems into simpler subproblems. Store results of subproblems to avoid redundant calculations (memoization).",
               difficulty: "Hard"
+            },
+            {
+              topic: "Array Manipulation",
+              concept: "Two-pointer technique is efficient for problems involving pairs or subarrays. Move pointers based on problem constraints.",
+              difficulty: "Easy"
+            },
+            {
+              topic: "Time Complexity",
+              concept: "O(log n) is better than O(n). Always analyze worst-case scenarios when choosing algorithms.",
+              difficulty: "Easy"
             }
           ]);
         });

@@ -352,6 +352,67 @@ async def get_flashcards(user_id: str):
         print(f"❌ Error fetching flashcards: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/video/search")
+async def search_video(request: dict):
+    try:
+        query = request.get("query", "")
+        print(f"🎥 Video search request: {query}")
+        
+        # In production, this would call YouTube API or your video database
+        # For now, return sample video URLs based on topic
+        video_mapping = {
+            "binary search": {
+                "video_url": "https://www.youtube.com/embed/P3YID7liBug",
+                "title": "Binary Search Algorithm - Complete Tutorial"
+            },
+            "recursion": {
+                "video_url": "https://www.youtube.com/embed/IJDJ0kBx2LM",
+                "title": "Recursion Explained - Step by Step"
+            },
+            "dynamic programming": {
+                "video_url": "https://www.youtube.com/embed/oBt53YbR9Kk",
+                "title": "Dynamic Programming Tutorial"
+            },
+            "arrays": {
+                "video_url": "https://www.youtube.com/embed/1FbI1gIREoE",
+                "title": "Arrays in Programming - Complete Guide"
+            },
+            "linked list": {
+                "video_url": "https://www.youtube.com/embed/njTh_OwMljA",
+                "title": "Linked Lists Explained"
+            },
+            "sorting": {
+                "video_url": "https://www.youtube.com/embed/kPRA0W1kECg",
+                "title": "Sorting Algorithms Visualized"
+            },
+            "graph": {
+                "video_url": "https://www.youtube.com/embed/tWVWeAqZ0WU",
+                "title": "Graph Algorithms Tutorial"
+            },
+            "tree": {
+                "video_url": "https://www.youtube.com/embed/oSWTXtMglKE",
+                "title": "Binary Trees - Complete Tutorial"
+            }
+        }
+        
+        # Find matching video
+        query_lower = query.lower()
+        for keyword, video_data in video_mapping.items():
+            if keyword in query_lower or query_lower in keyword:
+                print(f"✅ Found matching video: {video_data['title']}")
+                return video_data
+        
+        # Default video if no match
+        print(f"ℹ️ No exact match, returning default video")
+        return {
+            "video_url": "https://www.youtube.com/embed/8hly31xKli0",
+            "title": f"Programming Tutorial: {query}"
+        }
+        
+    except Exception as e:
+        print(f"❌ Error searching video: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.on_event("shutdown")
 async def shutdown_event():
     print("\n🔒 Shutting down server...")

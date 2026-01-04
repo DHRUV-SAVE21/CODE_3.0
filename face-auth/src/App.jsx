@@ -33,6 +33,7 @@ import GuidedProblemSolving from './pages/GuidedProblemSolving';
 import LiveDoubtResolution from './pages/LiveDoubtResolution';
 import PricingDemo from './pages/pricing-demo';
 import SmartRevision from './pages/SmartRevision';
+import IntelligentVideoLearning from './pages/IntelligentVideoLearning';
 
 // Layout Component
 const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true, showPricing = false }) => {
@@ -145,6 +146,8 @@ function App() {
         } />
 
         <Route path="/smart-revision" element={<SmartRevision />} />
+
+        <Route path="/intelligent-video-learning" element={<IntelligentVideoLearning />} />
       </Routes>
     </Router>
   );
