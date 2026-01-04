@@ -72,3 +72,11 @@ export async function submitLiveDoubtEvent(eventData) {
 
   return res.json();
 }
+
+export async function getUserDashboard(userId) {
+  const res = await fetch(`${API_BASE_URL}/api/user/${userId}/dashboard`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch dashboard data");
+  }
+  return res.json();
+}

@@ -31,9 +31,10 @@ import UserSelect from './pages/UserSelect';
 import Protected from './pages/Protected';
 import GuidedProblemSolving from './pages/GuidedProblemSolving';
 import LiveDoubtResolution from './pages/LiveDoubtResolution';
+import PricingDemo from './pages/pricing-demo';
 
 // Layout Component
-const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true }) => {
+const Layout = ({ children, showHero = false, showFeatures = false, showNavBar = true, showPricing = false }) => {
   return (
     <div className="app-layout min-h-screen flex flex-col">
       {showNavBar && <NavBar />}
@@ -42,6 +43,7 @@ const Layout = ({ children, showHero = false, showFeatures = false, showNavBar =
         {children}
       </main>
       {showFeatures && <FeaturesSection />}
+      {showPricing && <PricingDemo />}
     </div>
   );
 };
@@ -76,7 +78,7 @@ function App() {
       <Routes>
         {/* Home page with Hero + Features */}
         <Route path="/" element={
-          <Layout showHero={true} showFeatures={true}>
+          <Layout showHero={true} showFeatures={true} showPricing={true}>
             {/* Main content can be empty or have additional content */}
             <div className="home-content">
               {/* Additional home page content if needed */}

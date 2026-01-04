@@ -254,6 +254,71 @@ async def live_doubt_resolution(request: LiveDoubtRequest):
         print(f"❌ error in live doubt resolution: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/user/{user_id}/dashboard")
+async def get_dashboard_data(user_id: str):
+    try:
+        # Simulate fetching data from database for the user progress
+        return {
+            "overallProgress": 62,
+            "problemsSolved": 48,
+            "totalProblems": 78,
+            "streak": 6,
+            "dailyGoalProgress": 75,
+            "topicPerformance": [
+                {"name": "Binary Search", "score": 80, "color": "emerald"},
+                {"name": "Arrays", "score": 60, "color": "amber"},
+                {"name": "Dynamic Prog", "score": 40, "color": "rose"}
+            ],
+            "hintAnalysis": {
+                "avgHintLevel": 2.6,
+                "maxHintLevel": 4,
+                "hintsExhausted": 4,
+                "dependency": "High"
+            },
+            "stuckInsights": {
+                "avgStuckScore": 63,
+                "highStuckEvents": 5,
+                "alerts": ["Frequent hesitation detected"],
+                "trend": [45, 52, 48, 70, 63, 58, 63]
+            },
+            "achievement": {
+                "title": "Data Structure Ace",
+                "icon": "Trophy",
+                "color": "amber",
+                "judge_note": "Exceptional logic in Binary Search"
+            },
+            "detailedExplanations": {
+                "overall-learning-progress": {
+                    "summary": "Your learning velocity is 22% higher than last week.",
+                    "analytics": "You've maintained a 6-day streak with an average of 8 problems per day. Most solutions were sub-optimal on first attempt but improved after review.",
+                    "advice": "Focus on space complexity for the next 3 problems to hit your 'Efficiency' milestone."
+                },
+                "topic-wise-performance": {
+                    "summary": "Strong grasp on Search algorithms, need work on Recursive DP.",
+                    "analytics": "Binary Search accuracy is at 92%. In Dynamic Programming, you correctly identified 4/5 state transitions but struggled with space-optimized bottom-up approaches.",
+                    "advice": "Review 'Tabulation vs Memoization' specifically for knapsack-type problems."
+                },
+                "hint-&-struggle-analysis": {
+                    "summary": "Hint dependency is decreasing in Easy-Medium problems.",
+                    "analytics": "You used Level 1 hints (Conceptual) for 80% of your solved problems. Level 4 hints (Code Snippets) were only used once this week.",
+                    "advice": "Try to solve 2 'Medium' problems tomorrow without opening any hints for the first 15 minutes."
+                },
+                "stuck-&-hesitation-insights": {
+                    "summary": "Hesitation detected mostly during 'Implementation' phase.",
+                    "analytics": "On average, you spend 12 minutes in a 'Stuck' state before either finding a solution or requesting a hint. Most stalls occur during syntax translation.",
+                    "advice": "Practice quick pseudo-coding to bridge the gap between logic and syntax."
+                },
+                "skill-achievement-badge": {
+                    "summary": "Achievement based on consistent 90%+ pass rate in Search topics.",
+                    "analytics": "Your 'Data Structure Ace' badge was triggered by your flawless execution of 5 'Binary Search' problems without needing implementation hints.",
+                    "advice": "Keep this momentum to unlock the 'Algorithm Architect' badge next week."
+                }
+            }
+        }
+    except Exception as e:
+        print(f"❌ Error fetching dashboard data: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.on_event("shutdown")
 async def shutdown_event():
     print("\n🔒 Shutting down server...")

@@ -78,7 +78,7 @@ export function NavBar({ onStart }) {
         <a href="#features" onClick={(e) => handleNavClick(e, 'features')} className="text-3xl font-medium text-black/70 hover:text-black transition-colors">Features</a>
      
         <a href="#pricing" onClick={(e) => handleNavClick(e, 'pricing')} className="text-3xl font-medium text-black/70 hover:text-black transition-colors">Pricing</a>
-        <a href="#about" onClick={(e) => handleNavClick(e, 'about')} className="text-3xl font-medium text-black/70 hover:text-black transition-colors">About</a>
+       
      </div>
       
       <div className="flex items-center gap-6">
